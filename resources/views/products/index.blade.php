@@ -5,7 +5,7 @@
     <x-message-flash/>
     @foreach ($products as $product)
     <div class="col-md-4 col-lg-3 mb-2">
-        <div class="card">
+        <div class="card text-center">
                 @if(count(json_decode($product->images)))
                     @foreach (json_decode($product->images) as $picture)
                 
@@ -20,10 +20,11 @@
                    <img src="https://via.placeholder.com/90" alt="" srcset=""> 
                  @endif
             <br>
-            <h5 class="text-center">{{ $product->title }}</h5>
-            <div class="card-body text-center">
+            <h5 >{{ $product->title }}</h5>
+            <span>{{ $product->price }} €</span>
+            <div class="card-body">
 
-                <a href="{{ route('produits.show',$product->id) }}" class="btn bg-primary text-white">Afficher</a>
+                <a href="{{ route('produits.show',$product->id) }}" class="btn bg-primary text-white"><i class="fa fa-eye mr-3"></i>Afficher</a>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
-<x-message-flash/>
+<x-message-flash />
 <div class="card">
     <div class="card-header">
         Produits dans le panier
@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->title }}</td>
-                    <td>${{ $product->price }}</td>
+                    <td>{{ $product->price }} €</td>
                     <td>{{ session('products')[$product->id] }}</td>
                 </tr>
                 @endforeach
@@ -30,11 +30,12 @@
         </table>
         <div class="row">
             <div class="text-end">
-                <a class="btn btn-outline-secondary mb-2"><b>Total à payer:</b> Euro {{ $viewData["total"] }}</a>
+                <a class="btn btn-outline-secondary mb-2"><b>Total à payer:</b>{{ $viewData["total"] }}€</a>
                 @if (count($viewData["products"]) > 0)
-                <a href="{{ route('commandes.create') }}" class="btn bg-primary text-white mb-2">Commander</a>
+                <a href="{{ route('commandes.create') }}" class="btn bg-primary text-white mb-2"><i class="fas fa-angle-double-right mr-2"></i>Commander</a>
                 <a href="{{ route('cart.delete') }}">
                     <button class="btn btn-danger mb-2">
+                        <i class="fa fa-trash"></i>
                         Vider le panier
                     </button>
                 </a>
